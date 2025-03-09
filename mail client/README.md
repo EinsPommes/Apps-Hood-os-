@@ -1,87 +1,74 @@
-# Hood OS Mail Client
+# Email Client
 
-A modern, feature-rich email client built with Python and Qt6 for Hood OS. This application provides a robust and user-friendly interface for managing multiple email accounts with support for both OAuth2 and traditional authentication methods.
+A modern email client for Linux desktop with multi-account support and secure credential storage.
 
 ## Features
 
-- **Multi-Account Support**
-  - Support for multiple email providers (Gmail, Outlook, Custom)
-  - OAuth2 authentication for modern email services
-  - Traditional username/password authentication
-  - Secure credential storage
-
-- **Email Management**
-  - IMAP/SMTP support for email synchronization
-  - Folder organization (Inbox, Sent, Drafts, Trash, etc.)
-  - Email composition with HTML support
-  - File attachments with drag-and-drop support
-  - Search and filter capabilities
-
-- **Modern Interface**
-  - Clean and intuitive Qt6-based UI
-  - Customizable themes and layouts
-  - Email preview pane
-  - Unread message counters
-  - Rich text email composition
-
-- **Security Features**
-  - Encrypted credential storage
-  - SSL/TLS support for secure connections
-  - Remote content blocking
-  - Spam filtering
+- Multi-account support (Gmail, Outlook, Custom IMAP/SMTP)
+- Modern Qt6-based user interface
+- Secure password storage using encryption
+- OAuth2 support for modern authentication
+- Email composition with HTML support
+- Folder organization and management
+- English user interface
 
 ## Requirements
 
-- Python 3.8+
-- Qt 6.4.0+
-- Required Python packages (see requirements.txt)
+- Python 3.8 or higher
+- PyQt6
+- SQLAlchemy
+- cryptography
 
 ## Installation
 
-1. Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Clone the repository:
+```bash
+git clone https://github.com/EinsPommes/Apps-Hood-os-.git
+cd "Apps-Hood-os-/mail client"
+```
 
-2. Run the application:
-   ```bash
-   python src/main.py
-   ```
+2. Create a virtual environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Linux
+```
 
-## Configuration
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-The application stores its configuration in the following locations:
-- Email accounts: SQLite database in `data/mailclient.db`
-- Application settings: Qt settings storage
-- OAuth2 configuration: `config/oauth2_config.json`
+## Usage
 
-## Development
+1. Start the application:
+```bash
+python3 src/main.py
+```
 
-The project follows a Model-View-Controller (MVC) architecture:
+2. Add your email account:
+   - Click "File" -> "Add Account"
+   - Enter your email and server details
+   - Choose between password or OAuth2 authentication
 
-- **Models**: Handle data management and business logic
-  - `models/email_list_model.py`: Email list display model
-  - `models/folder_tree_model.py`: Folder hierarchy model
-  - `database/models.py`: Database models for accounts and emails
+3. Start using the client:
+   - View your folders in the left panel
+   - Read emails in the main view
+   - Compose new emails using the compose button
 
-- **Views**: User interface components
-  - `ui/main_window.py`: Main application window
-  - `ui/compose_dialog.py`: Email composition dialog
-  - `ui/account_dialog.py`: Account management dialog
-  - `ui/settings_dialog.py`: Application settings dialog
+## Security
 
-- **Utils**: Helper classes and utilities
-  - `utils/email_service.py`: Email service implementation
-  - `utils/oauth2_handler.py`: OAuth2 authentication handler
-
-## License
-
-This project is part of Hood OS and follows its licensing terms.
+- All passwords are encrypted using Fernet symmetric encryption
+- Credentials are stored securely in `~/.config/hood-mail/`
+- No plaintext passwords are stored in the database
+- Secure connection handling for IMAP/SMTP
 
 ## Contributing
 
-When contributing to this project, please:
-1. Follow the existing code style
-2. Add unit tests for new features
-3. Update documentation as needed
-4. Ensure all tests pass before submitting changes
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is part of Hood OS. All rights reserved.
