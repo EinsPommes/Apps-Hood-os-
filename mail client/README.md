@@ -4,7 +4,13 @@ A modern email client for Linux desktop with multi-account support and secure cr
 
 ## Features
 
-- Multi-account support (Gmail, Outlook, Custom IMAP/SMTP)
+- Multi-account support with presets for:
+  - Gmail (with OAuth2)
+  - Outlook (with OAuth2)
+  - Web.de
+  - GMX
+  - Yahoo (with OAuth2)
+  - Custom IMAP/SMTP servers
 - Modern Qt6-based user interface
 - Secure password storage using encryption
 - OAuth2 support for modern authentication
@@ -47,8 +53,16 @@ python3 src/main.py
 
 2. Add your email account:
    - Click "File" -> "Add Account"
-   - Enter your email and server details
-   - Choose between password or OAuth2 authentication
+   - Select your email provider from the dropdown
+   - For Gmail, Outlook, and Yahoo:
+     - Server settings will be automatically configured
+     - OAuth2 will be enabled for better security
+   - For Web.de and GMX:
+     - Server settings will be automatically configured
+     - Use your regular password
+   - For custom servers:
+     - Enter your IMAP and SMTP server details
+     - Choose between password or OAuth2 authentication
 
 3. Start using the client:
    - View your folders in the left panel
@@ -61,6 +75,7 @@ python3 src/main.py
 - Credentials are stored securely in `~/.config/hood-mail/`
 - No plaintext passwords are stored in the database
 - Secure connection handling for IMAP/SMTP
+- OAuth2 support for providers that recommend it
 
 ## Contributing
 
