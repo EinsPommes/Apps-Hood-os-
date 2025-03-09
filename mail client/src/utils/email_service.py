@@ -38,7 +38,7 @@ class EmailService:
             # Connect to IMAP
             self.imap = imaplib.IMAP4_SSL(self.imap_server)
             if self.use_oauth2:
-                raise NotImplementedError("OAuth2 authentication not yet implemented")
+                raise NotImplementedError("OAuth2 authentication is not yet implemented")
             else:
                 self.imap.login(self.email, password)
 
@@ -102,7 +102,7 @@ class EmailService:
             return sorted(folders)
             
         except Exception as e:
-            raise Exception(f"Error retrieving folders: {str(e)}")
+            raise Exception(f"Could not retrieve folders: {str(e)}")
 
     def get_emails(self, folder, limit=50):
         """Get emails from specified folder"""
@@ -156,7 +156,7 @@ class EmailService:
 
             return email_list
         except Exception as e:
-            raise Exception(f"Error retrieving emails: {str(e)}")
+            raise Exception(f"Could not retrieve emails from {folder}: {str(e)}")
 
     def send_email(self, to, subject, body):
         """Send email"""
@@ -174,7 +174,7 @@ class EmailService:
             self.smtp.send_message(msg)
             return True
         except Exception as e:
-            raise Exception(f"Error sending email: {str(e)}")
+            raise Exception(f"Could not send email: {str(e)}")
 
     def refresh_oauth2_token(self):
         """Refresh OAuth2 token"""
